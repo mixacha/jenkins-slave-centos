@@ -26,6 +26,9 @@ RUN echo "jenkins ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Set password for the jenkins user (you may want to alter this).
 RUN echo "jenkins:jenkins" | chpasswd
+# Set root password for image
+RUN echo "root:root" | chpasswd
+
 
 # Set up SSH 
 RUN mkdir /var/run/sshd && mkdir /var/log/ssh
@@ -46,4 +49,4 @@ RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config && sed -ri 's/#Use
 EXPOSE 22  
 
 # RUN supervisor
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-n"]
