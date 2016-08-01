@@ -1,7 +1,7 @@
 # base image
 FROM centos:centos6
  
-MAINTAINER shayashibara <meikyowise@gmail.com>
+MAINTAINER Milan Karalic <mixacha@gmail.com>
  
 # Install Packages
 RUN yum update -y
