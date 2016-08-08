@@ -15,6 +15,7 @@ RUN mkdir /etc/supervisord.d && mkdir /var/log/supervisor
 ADD templates/supervisord.conf /etc/supervisord.conf
 ADD templates/sshd.conf /etc/supervisord.d/sshd.conf
 
+
 # Add user jenkins to the image
 RUN adduser jenkins
 
@@ -28,6 +29,10 @@ RUN echo "jenkins ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN echo "jenkins:jenkins" | chpasswd
 # Set root password for image
 RUN echo "root:root" | chpasswd
+
+# 
+RUN mkdir /root/.ssh
+ADD templates/config /root/.ssh/config
 
 
 # Set up SSH 
